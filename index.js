@@ -1,3 +1,6 @@
+
+
+/*========================================BOILERPLATE=====================================================*/
 // index.js
 // where your node app starts
 
@@ -28,3 +31,14 @@ app.get('/api/hello', function (req, res) {
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+/*========================================================================================================*/
+
+
+app.route('/api/whoami').get((req, res) => {
+  const ip = req.ip;
+  const lang = req.get('Language-Accepts');
+  const software = req.get('User-Agent');
+
+  res.json({"ipaddress": ip, "language": lang, "software": software});
+})
